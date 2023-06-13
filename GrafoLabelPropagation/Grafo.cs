@@ -179,5 +179,71 @@
             }
             return true;
         }
+
+        public void SaveGrafoToCSV()
+        {
+            // Salvar o grafo em um arquivo CSV
+
+            string filePath = "C:\\Users\\PC\\Desktop\\Grafos\\grafin2.csv";
+
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                // Escrever o cabeçalho do arquivo CSV
+                writer.WriteLine("Source,Target");
+
+                // Escrever as arestas do grafo no formato CSV
+                for (int i = 0; i < numVertices; i++)
+                {
+                    for (int j = i + 1; j < numVertices; j++)
+                    {
+                        if (MatrizAdjacencia[i, j] == 1)
+                        {
+                            writer.WriteLine($"{i},{j}");
+                        }
+                    }
+                }
+            }
+        }
+
+        public void LoadGrafoFromCSV()
+        {
+            // Carregar um grafo a partir de um arquivo CSV
+
+            string filePath = "C:\\Users\\PC\\Desktop\\Grafos\\grafin2.csv";
+            // Limpar o grafo existente
+            LimparGrafo();
+
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                // Ignorar a linha do cabeçalho
+                reader.ReadLine();
+
+                // Ler as arestas do arquivo CSV e adicioná-las ao grafo
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    string[] vertices = line.Split(',');
+
+                    if (vertices.Length >= 2)
+                    {
+                        int source = int.Parse(vertices[0]);
+                        int target = int.Parse(vertices[1]);
+                        AddAresta(source, target);
+                    }
+                }
+            }
+        }
+
+        public void LimparGrafo()
+        {
+            // Limpar o grafo, removendo todas as arestas e vértices
+
+            MatrizAdjacencia = new int[numVertices, numVertices];
+
+            for (int i = 0; i < numVertices; i++)
+            {
+                ListaAdjacencia[i].Clear();
+            }
+        }
     }
 }
