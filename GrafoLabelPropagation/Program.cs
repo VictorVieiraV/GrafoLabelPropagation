@@ -40,7 +40,8 @@ public class Program
 
         int numTotalArestas = grafo.GetNumArestas();
         Console.WriteLine("Número total arestas: " + numTotalArestas);
-
+        
+        grafo.SaveGrafoToCSV();
         grafo.LoadGrafoFromCSV();
     }
 }

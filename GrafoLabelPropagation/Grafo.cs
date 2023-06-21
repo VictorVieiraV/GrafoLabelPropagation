@@ -184,7 +184,7 @@
         {
             // Salvar o grafo em um arquivo CSV
 
-            string filePath = "C:\\Users\\PC\\Desktop\\Grafos\\grafin2.csv";
+            string filePath = "C:\\Users\\PC\\Desktop\\GrafoResposta\\grafinSave.csv";
 
             using (StreamWriter writer = new StreamWriter(filePath))
             {
@@ -209,7 +209,7 @@
         {
             // Carregar um grafo a partir de um arquivo CSV
 
-            string filePath = "C:\\Users\\PC\\Desktop\\Grafos\\grafin2.csv";
+            string filePath = "C:\\Users\\PC\\Desktop\\GrafoResposta\\grafin2.csv";
             // Limpar o grafo existente
             LimparGrafo();
 
